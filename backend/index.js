@@ -16,7 +16,7 @@ client.connect();
 
 app.get("/api", async (_request, response) => {
   const { rows } = await client.query("SELECT * FROM mc WHERE name = $1", [
-    "Harley", "Honda", "KAWA", "YAMAHA", "DUC"
+    "Harley",
   ]);
 
   response.send(rows);
