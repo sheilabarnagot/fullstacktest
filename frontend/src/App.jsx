@@ -26,7 +26,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <p> Datos de la base de datos:</p>
+        <p> Data from the database:</p>
         <ul>
           {data.map((item, index) => (
             <li key={index}>
