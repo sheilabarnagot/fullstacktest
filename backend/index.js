@@ -1,12 +1,13 @@
-const express = require("express"),
-  path = require("path");
+const express = require("express");
+const path = require("path");
 const cors = require("cors");
-app.use(express.json());
-app.use(cors());
+const { Client } = require("pg");
+
 const app = express();
 
-const dotenv = require("dotenv"),
-  { Client } = require("pg");
+app.use(cors());
+
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -25,7 +26,7 @@ app.get("/api", async (_request, response) => {
 });
 
 app.use(express.static(path.join(path.resolve(), "public")));
-
+app.use(express.json());
 app.listen(3000, () => {
   console.log("Redo på http://localhost:3000/");
 });
