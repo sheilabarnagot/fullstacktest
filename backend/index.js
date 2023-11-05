@@ -19,7 +19,6 @@ client.connect();
 
 app.get("/api", async (_request, response) => {
   const { rows } = await client.query("SELECT * FROM mc");
-
   response.send(rows);
 });
 
