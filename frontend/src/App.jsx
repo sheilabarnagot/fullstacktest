@@ -4,15 +4,15 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     fetch("/api")
       .then((response) => response.json())
       .then((result) => {
-        alert(`Hello ${result.hello}!`);
+        setData(result);
       });
   }, []);
-
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -26,9 +26,15 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <p> Datos de la base de datos:</p>
+        <ul>
+          {data.map((item, index) => (
+            <li key={index}>
+              Name: {item.name}, Brand: {item.brand}, Model: {item.model}, CC:{" "}
+              {item.cc}, Country: {item.country}
+            </li>
+          ))}
+        </ul>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
