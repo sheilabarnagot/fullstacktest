@@ -22,6 +22,22 @@ app.get("/api", async (_request, response) => {
   response.send(rows);
 });
 
+app.post("/api/new", async (request, response) => {
+  const newData = request.body;
+  response.send("New item created!");
+});
+
+app.put("/api/update/:id", async (request, response) => {
+  const { id } = request.params;
+  const updatedData = request.body;
+  response.send(`Item with ID ${id} it's up to date`);
+});
+
+app.delete("/api/delete/:id", async (request, response) => {
+  const { id } = request.params;
+  response.send(`Item with ID ${id} deleted`);
+});
+
 app.use(express.static(path.join(path.resolve(), "public")));
 
 app.use(express.json());
